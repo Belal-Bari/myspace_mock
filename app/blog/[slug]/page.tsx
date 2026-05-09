@@ -23,14 +23,10 @@ export async function generateStaticParams() {
 
 export default async function BlogPostPage({ params }: Props) {
     const { slug } = await params;
-    //console.log('Slug-->',slug);
     const posts: Post[] = await fetch('http://localhost:3000/api/content').then(
         (res) => res.json()
     );
-    //console.log('All-->', posts)
-    //console.log('Params-->',params.slug)
     const post = posts.find((post) => post.slug === slug)!;
-    //console.log('Post-->',post)
     return(
         <div>
             <h1>{post.title}</h1>
