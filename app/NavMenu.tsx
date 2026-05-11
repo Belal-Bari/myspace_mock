@@ -1,10 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from './NavMenu.module.css';
+import { getServerSession } from "next-auth";
 
 import React from 'react'
+import { SignInButton, SignOutButton } from "@/components/buttons";
 
 const NavMenu = () => {
+    const session = getServerSession();
+
   return (
     <nav className={styles.nav}>
         <Link href={'/'}>
@@ -24,6 +28,12 @@ const NavMenu = () => {
             </li>
             <li>
                 <Link href={'/users'}>Users</Link>
+            </li>
+            <li>
+                <SignInButton />
+            </li>
+            <li>
+                <SignOutButton />
             </li>
         </ul>
     </nav>
